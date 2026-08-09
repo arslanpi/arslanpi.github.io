@@ -383,13 +383,11 @@ p {
 .hero-copy .tagline {
   font-size: 1.15rem;
   color: var(--muted);
-  margin-bottom: 28px;
+  margin-bottom: 8px;
 }
 
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+.hero-copy .tagline:last-of-type {
+  margin-bottom: 0;
 }
 
 .hero-photo-wrap {
@@ -425,14 +423,19 @@ p {
 }
 
 .hero-social a {
-  width: 42px;
-  height: 42px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   border: 1px solid var(--line);
   display: grid;
   place-items: center;
   color: var(--ink);
   background: var(--white);
+  font-size: 1.35rem;
+}
+
+.hero-social a .ai {
+  font-size: 1.35rem;
 }
 
 .hero-social a:hover {
@@ -458,9 +461,10 @@ p {
 }
 
 .info-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
   margin-top: 28px;
 }
 
@@ -468,6 +472,19 @@ p {
   display: flex;
   align-items: center;
   gap: 14px;
+}
+
+.info-item-spaced {
+  margin-top: 10px;
+}
+
+.info-focus {
+  margin-top: 6px;
+  white-space: nowrap;
+}
+
+.info-focus .info-text {
+  white-space: nowrap;
 }
 
 .info-icon {
@@ -585,6 +602,11 @@ p {
   background: var(--white);
   border: 3px solid var(--accent);
   z-index: 1;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.timeline-event-copy {
+  transition: transform 0.25s ease;
 }
 
 .timeline-event-thumbnail {
@@ -596,11 +618,13 @@ p {
   padding: 4px 12px;
   border-radius: 4px;
   margin-bottom: 10px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .timeline-event h3 {
   font-size: 1.1rem;
   margin-bottom: 4px;
+  transition: color 0.25s ease;
 }
 
 .timeline-event h4 {
@@ -608,14 +632,40 @@ p {
   font-weight: 600;
   color: var(--muted);
   margin-bottom: 8px;
+  transition: color 0.25s ease;
 }
 
 .timeline-event h4 a {
   color: var(--muted);
+  transition: color 0.25s ease;
 }
 
 .timeline-event h4 a:hover {
   color: var(--accent);
+}
+
+.timeline-event:hover h3 {
+  color: var(--accent);
+}
+
+.timeline-event:hover h4,
+.timeline-event:hover h4 a {
+  color: var(--accent);
+}
+
+.timeline-event:hover .timeline-event-icon {
+  background: var(--accent);
+  transform: scale(1.2);
+  box-shadow: 0 0 0 6px rgba(252, 154, 64, 0.2);
+}
+
+.timeline-event:hover .timeline-event-copy {
+  transform: translateX(6px);
+}
+
+.timeline-event:hover .timeline-event-thumbnail {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(252, 154, 64, 0.35);
 }
 
 .timeline-event p {
@@ -728,9 +778,9 @@ p {
   line-height: 1.65;
 }
 
-.pub-list .title-em {
+.pub-list strong {
   color: var(--ink);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .pub-links {
@@ -739,7 +789,9 @@ p {
 }
 
 .pub-links a {
-  color: var(--muted);
+  color: #38bdf8;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .pub-links a:hover {
@@ -818,9 +870,9 @@ p {
 
 .contact-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
-  max-width: 800px;
+  max-width: 980px;
   margin: 0 auto;
 }
 
@@ -849,7 +901,8 @@ p {
 .contact-card p {
   color: var(--muted);
   margin: 0;
-  word-break: break-word;
+  white-space: nowrap;
+  display: inline-block;
 }
 
 .contact-card a:hover {
@@ -876,13 +929,14 @@ p {
 }
 
 .footer-social a {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08);
   color: var(--white);
   display: grid;
   place-items: center;
+  font-size: 1.25rem;
 }
 
 .footer-social a:hover {
@@ -930,10 +984,6 @@ p {
   .hero-grid {
     grid-template-columns: 1fr;
     text-align: center;
-  }
-
-  .hero-actions {
-    justify-content: center;
   }
 
   .hero-photo-wrap {
@@ -992,7 +1042,13 @@ p {
     padding: 80px 0 70px;
   }
 
+  .info-focus,
+  .info-focus .info-text,
+  .contact-card a {
+    white-space: normal;
+  }
+
   .info-list {
-    grid-template-columns: 1fr;
+    align-items: center;
   }
 }
